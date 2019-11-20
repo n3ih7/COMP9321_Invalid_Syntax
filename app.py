@@ -107,7 +107,7 @@ def get_weather_current():
     a = {'cityName': weather_current_dict['name'], 'Country': weather_current_dict['sys']['country'], today: current}
     a.update(weather_current_dict['coord'])
 
-    forecast = send_request_weather_forecast(city)
+    # forecast = send_request_weather_forecast(city)
     # for index, item in enumerate(forecast['list']):
 
     return jsonify(a)
