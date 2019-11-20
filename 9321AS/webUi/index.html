@@ -5,101 +5,64 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Fire prediction</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="styles/provided.css" />
-    <link rel="stylesheet" type="text/css" media="screen" href="styles/post.css" />
 </head>
 
 <body>
     <div id="root">
+    <button id = 'start' onclick="predict()">start</button>
+    "humidity":<input type="text" id ="humidity" value="">  
+    "pressure": <input type="text" id ="pressure" value=""> 
+    "temprature": <input type="text" id ="temprature" value=""> 
+    "wind_direction": <input type="text" id ="wind_direction" value=""> 
+    "wind_speed": <input type="text" id ="wind_speed" value="">  
+    <text id = 'demo'> </text>
+    <script>
 
-        <header class='banner' id="nav">
-            <h1 id="logo" class="flex-center">Seddit</h1>
-            <ul class='nav'>
-                <li class="nav-item">
-                    <input id="search" data-id-search placeholder="Search Seddit" type="search" />
-                </li>
-                <li class='nav-item'>
-                    <button data-id-login class="button button-primary">Log In</button>
-                </li>
-                <li class='nav-item'>
-                    <button data-id-signup class="button button-secondary">Sign Up</button>
-                </li>
-            </ul>
-        </header>
-        <main role='main'>
-            <ul id="feed" data-id-feed>
-                <div class="feed-header">
-                    <h3 class="feed-title alt-text">Popular posts</h3>
-                    <button class="button button-secondary">Post</button>
-                </div>
-                <li class="post" data-id-post>
-                    <div class="vote" data-id-upvotes></div>
-                    <div class="content">
-                        <h4 data-id-title class="post-title alt-text">Avengerâs Endgame Officially Passes Avatar To Become The
-                            Highest Grossing Movie Of All Time</h4>
-                        <p class="post-author" data-id-author>Posted by @some_dude69</p>
-                    </div>
-                </li>
-                <li class="post" data-id-post>
-                    <div class="vote" data-id-upvotes></div>
-                    <div class="content">
-                        <h4 data-id-title class="post-title alt-text">Avengerâs Endgame Officially Passes Avatar To Become The
-                            Highest Grossing Movie Of All Time</h4>
-                        <p class="post-author" data-id-author>Posted by @some_dude69</p>
-                    </div>
-                </li>
-                <li class="post" data-id-post>
-                    <div class="vote" data-id-upvotes></div>
-                    <div class="content">
-                        <h4 data-id-title class="post-title alt-text">Avengerâs Endgame Officially Passes Avatar To Become The
-                            Highest Grossing Movie Of All Time</h4>
-                        <p class="post-author" data-id-author>Posted by @some_dude69</p>
-                    </div>
-                </li>
-                <li class="post" data-id-post>
-                    <div class="vote" data-id-upvotes></div>
-                    <div class="content">
-                        <h4 data-id-title class="post-title alt-text">Avengerâs Endgame Officially Passes Avatar To Become The
-                            Highest Grossing Movie Of All Time</h4>
-                        <p class="post-author" data-id-author>Posted by @some_dude69</p>
-                    </div>
-                </li>
-                <li class="post" data-id-post>
-                    <div class="vote" data-id-upvotes></div>
-                    <div class="content">
-                        <h4 data-id-title class="post-title alt-text">Avengerâs Endgame Officially Passes Avatar To Become The
-                            Highest Grossing Movie Of All Time</h4>
-                        <p class="post-author" data-id-author>Posted by @some_dude69</p>
-                    </div>
-                </li>
-                <li class="post" data-id-post>
-                    <div class="vote" data-id-upvotes></div>
-                    <div class="content">
-                        <h4 data-id-title class="post-title alt-text">Avengerâs Endgame Officially Passes Avatar To Become The
-                            Highest Grossing Movie Of All Time</h4>
-                        <p class="post-author" data-id-author>Posted by @some_dude69</p>
-                    </div>
-                </li>
-                <li class="post" data-id-post>
-                    <div class="vote" data-id-upvotes></div>
-                    <div class="content">
-                        <h4 data-id-title class="post-title alt-text">Avengerâs Endgame Officially Passes Avatar To Become The
-                            Highest Grossing Movie Of All Time</h4>
-                        <p class="post-author" data-id-author>Posted by @some_dude69</p>
-                    </div>
-                </li>
-            </ul>
-        </main>
+            backend = 'http://127.0.0.1:5000'
+            function API(path, options) {
+            return fetch(backend +'/'+ path, options)
+                .then(result => {
+                return result;
+                })
+            }
 
-        
-        <footer>
+            function fire(v1,v2,v3,v4,v5) {
+            return API('/prediction', {
+            method: "POST",
+            body: JSON.stringify({
+                "h": v1,
+                "p": v2,
+                "t": v3,
+                "w": v4,
+                "w2": v5,
+            }),
+            headers: {
+                "Content-Type": "application/json",
+            },
+            });
+        }
+            function predict(){
 
-        </footer>
-       
-    </div>
-   
-    <script type="module" src="src/index.js" crossorigin="use-credentials"></script>
+                fire(1, 1, 1, 1,1).then(
+                    token => {
+                    if (token.status == 200){
+                        alert("Success!");
+                        result.json().then(
+                            result =>{
+                            console.log(result.prediction);
+                            document.getElementById("demo").innerHTML= result.prediction;
+                        }
+                    );
+                    }
+                    }
+                );
+            
+                
+            }
+    </script>
+
+ </div>
+  
 
 </body>
 

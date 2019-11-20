@@ -1,5 +1,5 @@
 
-import backend from './backend_url.js'
+backend = 'http://127.0.0.1:5000'
 //get api address
 export function signup(signup_username, signup_password, signup_email, signup_name) {
     return API('auth/signup', {
