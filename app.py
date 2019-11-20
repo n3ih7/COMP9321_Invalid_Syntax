@@ -50,7 +50,7 @@ def send_request_weather_current(cityName: str = "Sydney"):
         print('HTTP Request failed')
 
 
-@app.route('/todo/api/v1.0/weather_current', methods=['GET'])
+@app.route('/api/weather', methods=['GET'])
 def get_weather_current():
     city = request.args.get('cityName', default='Sydney', type=str)
     weather_current_dict = send_request_weather_current(city)
@@ -103,13 +103,74 @@ def get_weather_current():
         elif 326.25 < current['deg'] <= 348.75:
             current['deg'] = 'north-northwest'
 
-    today = str(datetime.date.today())
-    a = {'cityName': weather_current_dict['name'], 'Country': weather_current_dict['sys']['country'], today: current}
+    today = datetime.date.today()
+    a = {'cityName': weather_current_dict['name'], 'Country': weather_current_dict['sys']['country'],
+         str(today): current}
     a.update(weather_current_dict['coord'])
 
-    # forecast = send_request_weather_forecast(city)
-    # for index, item in enumerate(forecast['list']):
+    forecast = send_request_weather_forecast(city)
+    n = 1
+    final = {}
+    for item in enumerate(forecast['list']):
+        if item[1]['dt_txt'].split(' ')[1].split(':')[0] == '09' and item[1]['dt_txt'].split(' ')[0] != str(
+                today) and n < 5:
+            j = item[1]['main']
+            k = item[1]['wind']
+            j.update(k)
+            j.pop('temp_max', None)
+            j.pop('temp_min', None)
+            j.pop('temp_kf', None)
+            j.pop('sea_level', None)
+            j.pop('grnd_level', None)
+            m = {str(today + datetime.timedelta(days=n)): j}
+            final.update(m)
+            n += 1
 
+    for key in final.keys():
+        data_humidity_1 = float(final[key]['humidity'])
+        data_pressure_1 = float(final[key]['pressure'])
+        data_temp_1 = float(final[key]['temp'])
+        data_wind_deg_1 = float(final[key]['deg'])
+        data_wind_speed_1 = float(final[key]['speed'])
+        data_1 = Model(data_humidity_1, data_pressure_1, data_temp_1, data_wind_deg_1, data_wind_speed_1)
+        fire_probability_1 = round(data_1.svm_predict()[0][0] * 0.68 * 100, 2)
+        final[key].update({'fire_probability': fire_probability_1})
+        final[key]['temp'] = round(final[key]['temp'] - 273.15, 2)
+        if final[key]['deg']:
+            if 348.75 < final[key]['deg'] <= 360 or 0 <= final[key]['deg'] <= 11.25:
+                final[key]['deg'] = 'north'
+            elif 11.25 < final[key]['deg'] <= 33.75:
+                final[key]['deg'] = 'north-northeast'
+            elif 33.75 < final[key]['deg'] <= 56.25:
+                final[key]['deg'] = 'northeast'
+            elif 56.25 < final[key]['deg'] <= 78.75:
+                final[key]['deg'] = 'east-northeast'
+            elif 78.75 < final[key]['deg'] <= 101.25:
+                final[key]['deg'] = 'east'
+            elif 101.25 < final[key]['deg'] <= 123.75:
+                final[key]['deg'] = 'east-southeast'
+            elif 123.75 < final[key]['deg'] <= 146.25:
+                final[key]['deg'] = 'southeast'
+            elif 146.25 < final[key]['deg'] <= 168.75:
+                final[key]['deg'] = 'south-southeast'
+            elif 168.75 < final[key]['deg'] <= 191.25:
+                final[key]['deg'] = 'south'
+            elif 191.25 < final[key]['deg'] <= 213.75:
+                final[key]['deg'] = 'south-southwest'
+            elif 213.75 < final[key]['deg'] <= 236.25:
+                final[key]['deg'] = 'southwest'
+            elif 236.25 < final[key]['deg'] <= 258.75:
+                final[key]['deg'] = 'west-southwest'
+            elif 258.75 < final[key]['deg'] <= 281.25:
+                final[key]['deg'] = 'west'
+            elif 281.25 < final[key]['deg'] <= 303.75:
+                final[key]['deg'] = 'west-northwest'
+            elif 303.75 < final[key]['deg'] <= 326.25:
+                final[key]['deg'] = 'northwest'
+            elif 326.25 < final[key]['deg'] <= 348.75:
+                final[key]['deg'] = 'north-northwest'
+
+    a.update(final)
     return jsonify(a)
 
 
