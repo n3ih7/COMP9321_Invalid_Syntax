@@ -70,9 +70,45 @@ def get_weather_current():
     current.pop('temp_min', None)
     current.pop('temp_max', None)
     current.update(weather_current_dict['wind'])
+    current['temp'] = round(current['temp'] - 273.15, 2)
+
+    if current['deg']:
+        current['deg'] = float(current['deg'])
+        if 348.75 < current['deg'] <= 360 & 0 <= current['deg'] <= 11.25:
+            current['deg'] = 'North'
+        elif 11.25 < current['deg'] <= 33.75:
+            current['deg'] = 'NNE'
+        elif 33.75 < current['deg'] <= 56.25:
+            current['deg'] = 'NE'
+        elif 56.25 < current['deg'] <= 78.75:
+            current['deg'] = 'ENE'
+        elif 78.75 < current['deg'] <= 101.25:
+            current['deg'] = 'East'
+        elif 101.25 < current['deg'] <= 123.75:
+            current['deg'] = 'ESE'
+        elif 123.75 < current['deg'] <= 146.25:
+            current['deg'] = 'SE'
+        elif 146.25 < current['deg'] <= 168.75:
+            current['deg'] = 'SSE'
+        elif 168.75 < current['deg'] <= 191.25:
+            current['deg'] = 'South'
+        elif 191.25 < current['deg'] <= 213.75:
+            current['deg'] = 'SSW'
+        elif 213.75 < current['deg'] <= 236.25:
+            current['deg'] = 'SW'
+        elif 236.25 < current['deg'] <= 258.75:
+            current['deg'] = 'WSW'
+        elif 258.75 < current['deg'] <= 281.25:
+            current['deg'] = 'West'
+        elif 281.25 < current['deg'] <= 303.75:
+            current['deg'] = 'WNW'
+        elif 303.75 < current['deg'] <= 326.25:
+            current['deg'] = 'NW'
+        elif 326.25 < current['deg'] <= 348.75:
+            current['deg'] = 'NNW'
 
     return jsonify(current)
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True, port=8090)
