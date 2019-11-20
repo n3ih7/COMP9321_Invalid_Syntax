@@ -27,14 +27,14 @@
             }
 
             function fire(v1,v2,v3,v4,v5) {
-            return API('/prediction', {
+            return API('prediction', {
             method: "POST",
             body: JSON.stringify({
-                "h": v1,
-                "p": v2,
-                "t": v3,
-                "w": v4,
-                "w2": v5,
+                "humidity": v1,
+                "pressure": v2,
+                "temprature": v3,
+                "wind_direction": v4,
+                "wind_speed": v5,
             }),
             headers: {
                 "Content-Type": "application/json",
