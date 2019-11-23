@@ -11,13 +11,13 @@ class Model:
 
     def svm_predict(self):
         obj = [self.h, self.p, self.t, self.wd, self.ws]
-        model = joblib.load('svm.model')
+        model = joblib.load('model/svm.model')
         result = model.predict_proba([obj])
         return result
 
     def lr_predict(self):
         obj = [self.h, self.p, self.t, self.wd, self.ws]
-        model = joblib.load('LR.model')
+        model = joblib.load('model/LR.model')
         result = model.predict([obj])
         return result
 
