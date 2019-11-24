@@ -33,7 +33,7 @@ def send_request_weather_forecast(cityName: str = "Sydney"):
                 "q": cityName,
                 "mode": "json",
                 "APPID": "5276bdc5394d77211678f28c6ff82721",
-            },
+            }, timeout=10
         )
         print('Response HTTP Status Code: {status_code}'.format(
             status_code=response.status_code))
@@ -53,7 +53,7 @@ def send_request_weather_current(cityName: str = "Sydney"):
                 "q": cityName,
                 "mode": "json",
                 "APPID": "5276bdc5394d77211678f28c6ff82721",
-            },
+            }, timeout=10
         )
         print('Response HTTP Status Code: {status_code}'.format(
             status_code=response.status_code))
@@ -62,18 +62,20 @@ def send_request_weather_current(cityName: str = "Sydney"):
         print('HTTP Request failed')
 
 
-@app.before_request
-def before_request_func():
+@app.route('/api/api_usage')
+def a():
     global authorization
+    global weather_usage
+    global cause_of_fire_usage
+    global severity_rating_usage
+    global cause_analysis_usage
+    global fire_factors_usage
+    global happened_times_usage
+    global state_and_fire_usage
     authorization = False
     key = request.args.get('APPID', type=str)
     if key == pre_share_key:
         authorization = True
-
-
-@app.route('/api/api_usage')
-def a():
-    global authorization
     if authorization:
         c = {'weather_usage': weather_usage, 'cause_of_fire_usage': cause_of_fire_usage,
              'severity_rating_usage': severity_rating_usage, 'cause_analysis_usage': cause_analysis_usage,
@@ -88,6 +90,11 @@ def a():
 
 @app.route('/api/weather', methods=['GET'])
 def get_weather_current():
+    global authorization
+    authorization = False
+    key = request.args.get('APPID', type=str)
+    if key == pre_share_key:
+        authorization = True
     if authorization:
         city = request.args.get('cityName', default='Sydney', type=str)
         weather_current_dict = send_request_weather_current(city)
@@ -220,6 +227,11 @@ def get_weather_current():
 
 @app.route('/api/cause_of_fire', methods=['GET'])
 def cause_of_fire():
+    global authorization
+    authorization = False
+    key = request.args.get('APPID', type=str)
+    if key == pre_share_key:
+        authorization = True
     if authorization:
         start_date = request.args.get('start_date', type=str)
         end_date = request.args.get('end_date', default='2013-12-31', type=str)
@@ -239,6 +251,11 @@ def cause_of_fire():
 
 @app.route('/api/severity_rating', methods=['GET'])
 def severity_rating():
+    global authorization
+    authorization = False
+    key = request.args.get('APPID', type=str)
+    if key == pre_share_key:
+        authorization = True
     if authorization:
         start_date_2 = request.args.get('start_date', type=str)
         end_date_2 = request.args.get('end_date', type=str)
@@ -258,6 +275,11 @@ def severity_rating():
 
 @app.route('/api/cause_analysis', methods=['GET'])
 def cause_analysis():
+    global authorization
+    authorization = False
+    key = request.args.get('APPID', type=str)
+    if key == pre_share_key:
+        authorization = True
     if authorization:
         start_date_3 = request.args.get('start_date', type=str)
         end_date_3 = request.args.get('end_date', type=str)
@@ -277,6 +299,11 @@ def cause_analysis():
 
 @app.route('/api/fire_factors', methods=['GET'])
 def fire_factors():
+    global authorization
+    authorization = False
+    key = request.args.get('APPID', type=str)
+    if key == pre_share_key:
+        authorization = True
     if authorization:
         date_4 = request.args.get('start_date', type=str)
         city_name_4 = request.args.get('city_name', type=str)
@@ -296,6 +323,11 @@ def fire_factors():
 
 @app.route('/api/happened_times', methods=['GET'])
 def leo5():
+    global authorization
+    authorization = False
+    key = request.args.get('APPID', type=str)
+    if key == pre_share_key:
+        authorization = True
     if authorization:
         start_date_5 = request.args.get('start_date', type=str)
         end_date_5 = request.args.get('end_date', type=str)
@@ -315,6 +347,11 @@ def leo5():
 
 @app.route('/api/state_and_fire', methods=['GET'])
 def shaun():
+    global authorization
+    authorization = False
+    key = request.args.get('APPID', type=str)
+    if key == pre_share_key:
+        authorization = True
     if authorization:
         start_date_6 = request.args.get('start_date', type=str)
         end_date_6 = request.args.get('end_date', type=str)
