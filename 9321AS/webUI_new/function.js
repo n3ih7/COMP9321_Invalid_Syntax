@@ -7,6 +7,7 @@
     document.getElementById("resimg4").style.display = 'none';
     document.getElementById("resimg5").style.display = 'none';
     document.getElementById("resimg6").style.display = 'none';
+    document.getElementById("b9").style.display = 'none';
     // document.getElementById("img1").src = 'data:image;base64, + base64
     document.getElementById("b1").addEventListener("click",function(){
 
@@ -165,10 +166,38 @@
             type:'get',
             success:function(response){
 
-              document.getElementById("value").textContent = 'My api has been used ' + response + ' times'
+              document.getElementById("b9").style.display = 'block';
+              document.getElementById("value1").style.display = 'block'
+              document.getElementById("value2").style.display = 'block'
+              document.getElementById("value3").style.display = 'block'
+              document.getElementById("value4").style.display = 'block'
+              document.getElementById("value5").style.display = 'block'
+              document.getElementById("value6").style.display = 'block'
+              document.getElementById("value7").style.display = 'block'  
+              document.getElementById("value1").textContent = "the usage of fire prediction api:" + response["weather_usage"]
+              document.getElementById("value2").textContent = "the usage of fire reason of fire api:" + response["cause_of_fire_usage"]
+              document.getElementById("value3").textContent = "the usage of cause analysis api:" + response["severity_rating_usage"]
+              document.getElementById("value4").textContent = "the usage of The impact of fire in US api:" + response["cause_analysis_usage"]
+              document.getElementById("value5").textContent = "the usage of fire reason of fire api:" + response["fire_factors_usage"]
+              document.getElementById("value6").textContent = "the usage of fire reason of fire api:" + response["happened_times_usage"]
+              document.getElementById("value7").textContent = "the usage of The stats & fire analysis api:" + response["state_and_fire_usage"]
 
-              
             }
             
         });
     })
+    document.getElementById("b9").addEventListener("click",function(){
+
+      
+            document.getElementById("b9").style.display = 'none';
+            document.getElementById("value1").style.display = 'none'
+            document.getElementById("value2").style.display = 'none'
+            document.getElementById("value3").style.display = 'none'
+            document.getElementById("value4").style.display = 'none'
+            document.getElementById("value5").style.display = 'none'
+            document.getElementById("value6").style.display = 'none'
+            document.getElementById("value7").style.display = 'none'
+
+          
+          
+  })
