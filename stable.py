@@ -8,9 +8,11 @@ from model.Modeling import Model
 from API_Additions import DA
 from LeoAPI import DB
 from state_and_fire import DC
+from flask_restplus import Api, Resource
 
 app = Flask(__name__)
 cors = CORS(app)
+api = Api(app)
 weather_usage = 0
 cause_of_fire_usage = 0
 severity_rating_usage = 0
@@ -65,6 +67,10 @@ def send_request_weather_current(cityName: str = "Sydney"):
 @app.route('/api/api_usage')
 def a():
     global authorization
+    authorization = False
+    key = request.args.get('APPID', type=str)
+    if key == pre_share_key:
+        authorization = True
     global weather_usage
     global cause_of_fire_usage
     global severity_rating_usage
@@ -72,15 +78,11 @@ def a():
     global fire_factors_usage
     global happened_times_usage
     global state_and_fire_usage
-    authorization = False
-    key = request.args.get('APPID', type=str)
-    if key == pre_share_key:
-        authorization = True
+    c = {'weather_usage': weather_usage, 'cause_of_fire_usage': cause_of_fire_usage,
+         'severity_rating_usage': severity_rating_usage, 'cause_analysis_usage': cause_analysis_usage,
+         'fire_factors_usage': fire_factors_usage, 'happened_times_usage': happened_times_usage,
+         'state_and_fire_usage': state_and_fire_usage}
     if authorization:
-        c = {'weather_usage': weather_usage, 'cause_of_fire_usage': cause_of_fire_usage,
-             'severity_rating_usage': severity_rating_usage, 'cause_analysis_usage': cause_analysis_usage,
-             'fire_factors_usage': fire_factors_usage, 'happened_times_usage': happened_times_usage,
-             'state_and_fire_usage': state_and_fire_usage}
         return jsonify(c)
     else:
         return jsonify(success=False,

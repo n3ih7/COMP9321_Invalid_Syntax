@@ -1,0 +1,409 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "This is Invalid_Syntax project server. You can find more about API we used at this page.",
+    "version": "1.0.0",
+    "title": "Swagger Invalid_Syntax",
+    "termsOfService": "http://swagger.io/terms/"
+  },
+  "host": "127.0.0.1:5000",
+  "basePath": "/api",
+  "tags": [
+    {
+      "name": "API Authorization and Usage",
+      "description": "each API usage statistics"
+    },
+    {
+      "name": "Weather and Fire Prediction",
+      "description": "Get weather forecast and fire prediction possibilities for the next five days"
+    },
+    {
+      "name": "Dataset Analysis",
+      "description": "Data Visualization by Category"
+    }
+  ],
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/api_usage": {
+      "get": {
+        "tags": [
+          "API Authorization and Usage"
+        ],
+        "summary": "check API usage",
+        "operationId": "getUsage",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "APPID",
+            "in": "query",
+            "required": true,
+            "description": "Api authorization key",
+            "default": "2db16d2a-c3b7-4d60-9bec-66f9996a91d1",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "401": {
+            "description": "Error: UNAUTHORIZED"
+          },
+          "404": {
+            "description": "City not found"
+          },
+          "500": {
+            "description": "Error: INTERNAL SERVER ERROR"
+          }
+        }
+      }
+    },
+    "/weather": {
+      "get": {
+        "tags": [
+          "Weather and Fire Prediction"
+        ],
+        "summary": "find by cityName",
+        "operationId": "getWeatherBycityName",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "cityName",
+            "in": "query",
+            "required": true,
+            "type": "string",
+            "default": "Sydney"
+          },
+          {
+            "name": "APPID",
+            "in": "query",
+            "required": true,
+            "description": "Api authorization key",
+            "default": "2db16d2a-c3b7-4d60-9bec-66f9996a91d1",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "401": {
+            "description": "Error: UNAUTHORIZED"
+          },
+          "404": {
+            "description": "City not found"
+          },
+          "500": {
+            "description": "Error: INTERNAL SERVER ERROR"
+          }
+        }
+      }
+    },
+    "/cause_of_fire": {
+      "get": {
+        "tags": [
+          "Dataset Analysis"
+        ],
+        "summary": "the cause of fire in specfic time period",
+        "operationId": "getCauseByTimePeriod",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "start_date",
+            "in": "query",
+            "required": true,
+            "type": "string",
+            "default": "2012-10-1"
+          },
+          {
+            "name": "end_date",
+            "in": "query",
+            "required": true,
+            "type": "string",
+            "default": "2017-9-1"
+          },
+          {
+            "name": "APPID",
+            "in": "query",
+            "required": true,
+            "description": "Api authorization key",
+            "default": "2db16d2a-c3b7-4d60-9bec-66f9996a91d1",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "401": {
+            "description": "Error: UNAUTHORIZED"
+          },
+          "404": {
+            "description": "City not found"
+          },
+          "500": {
+            "description": "Error: INTERNAL SERVER ERROR"
+          }
+        }
+      }
+    },
+    "/severity_rating": {
+      "get": {
+        "tags": [
+          "Dataset Analysis"
+        ],
+        "summary": "severity_rating in specfic time period",
+        "operationId": "getratingTimePeriod",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "start_date",
+            "in": "query",
+            "required": true,
+            "type": "string",
+            "default": "2012-10-1"
+          },
+          {
+            "name": "end_date",
+            "in": "query",
+            "required": true,
+            "type": "string",
+            "default": "2017-9-1"
+          },
+          {
+            "name": "APPID",
+            "in": "query",
+            "required": true,
+            "description": "Api authorization key",
+            "default": "2db16d2a-c3b7-4d60-9bec-66f9996a91d1",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "401": {
+            "description": "Error: UNAUTHORIZED"
+          },
+          "404": {
+            "description": "City not found"
+          },
+          "500": {
+            "description": "Error: INTERNAL SERVER ERROR"
+          }
+        }
+      }
+    },
+    "/cause_analysis": {
+      "get": {
+        "tags": [
+          "Dataset Analysis"
+        ],
+        "summary": "relationship between human_factor and Fire rating",
+        "operationId": "getfactorandrateinTimePeriod",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "start_date",
+            "in": "query",
+            "required": true,
+            "type": "string",
+            "default": "2012-10-1"
+          },
+          {
+            "name": "end_date",
+            "in": "query",
+            "required": true,
+            "type": "string",
+            "default": "2017-9-1"
+          },
+          {
+            "name": "APPID",
+            "in": "query",
+            "required": true,
+            "description": "Api authorization key",
+            "default": "2db16d2a-c3b7-4d60-9bec-66f9996a91d1",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "401": {
+            "description": "Error: UNAUTHORIZED"
+          },
+          "404": {
+            "description": "City not found"
+          },
+          "500": {
+            "description": "Error: INTERNAL SERVER ERROR"
+          }
+        }
+      }
+    },
+    "/fire_factors": {
+      "get": {
+        "tags": [
+          "Dataset Analysis"
+        ],
+        "summary": "fire wtih weather impact",
+        "operationId": "getimpactforfire",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "start_date",
+            "in": "query",
+            "required": true,
+            "type": "string",
+            "default": "2012-10-1"
+          },
+          {
+            "name": "city_name",
+            "in": "query",
+            "required": true,
+            "type": "string",
+            "default": "New York"
+          },
+          {
+            "name": "APPID",
+            "in": "query",
+            "required": true,
+            "description": "Api authorization key",
+            "default": "2db16d2a-c3b7-4d60-9bec-66f9996a91d1",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "401": {
+            "description": "Error: UNAUTHORIZED"
+          },
+          "404": {
+            "description": "City not found"
+          },
+          "500": {
+            "description": "Error: INTERNAL SERVER ERROR"
+          }
+        }
+      }
+    },
+    "/happened_times": {
+      "get": {
+        "tags": [
+          "Dataset Analysis"
+        ],
+        "summary": "fire occurred time",
+        "operationId": "getimagebytime",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "start_date",
+            "in": "query",
+            "required": true,
+            "type": "string",
+            "default": "2012-10-1"
+          },
+          {
+            "name": "end_date",
+            "in": "query",
+            "required": true,
+            "type": "string",
+            "default": "2017-9-1"
+          },
+          {
+            "name": "APPID",
+            "in": "query",
+            "required": true,
+            "description": "Api authorization key",
+            "default": "2db16d2a-c3b7-4d60-9bec-66f9996a91d1",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "401": {
+            "description": "Error: UNAUTHORIZED"
+          },
+          "404": {
+            "description": "City not found"
+          },
+          "500": {
+            "description": "Error: INTERNAL SERVER ERROR"
+          }
+        }
+      }
+    },
+    "/state_and_fire": {
+      "get": {
+        "tags": [
+          "Dataset Analysis"
+        ],
+        "summary": "fire occurred times by state",
+        "operationId": "gettimebystate",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "start_date",
+            "in": "query",
+            "required": true,
+            "type": "string",
+            "default": "2012-10-1"
+          },
+          {
+            "name": "end_date",
+            "in": "query",
+            "required": true,
+            "type": "string",
+            "default": "2017-9-1"
+          },
+          {
+            "name": "APPID",
+            "in": "query",
+            "required": true,
+            "description": "Api authorization key",
+            "default": "2db16d2a-c3b7-4d60-9bec-66f9996a91d1",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "401": {
+            "description": "Error: UNAUTHORIZED"
+          },
+          "404": {
+            "description": "City not found"
+          },
+          "500": {
+            "description": "Error: INTERNAL SERVER ERROR"
+          }
+        }
+      }
+    }
+  }
+}
