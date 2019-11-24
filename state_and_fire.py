@@ -4,6 +4,7 @@ import numpy as np
 from matplotlib.backends.backend_pdf import PdfPages
 from flask import Flask
 from flask import request
+
 '''
 
 df1 = df1['STATE'].value_counts()
@@ -15,6 +16,8 @@ img = plt.savefig('df1.png')
 plt.show()
 #print(df1.head(5))
 '''
+
+
 class DC:
     def __init__(self, start, end):
         sy, sm, sd = start.split('-')
@@ -25,10 +28,6 @@ class DC:
         self.end = end
         self.s = sy * 10000 + sm * 100 + sd
         self.e = ey * 10000 + em * 100 + ed
-
-    def print_it(self):
-        print('start:{0}'.format(self.s))
-        print('end:{0}'.format(self.e))
 
     def api_1(self):
         dataset = pd.read_csv('model/origin_data.csv')
@@ -53,8 +52,9 @@ class DC:
         df['state_name'] = name
         df['counts'] = count
         df.plot.bar(x='state_name', y='counts')
-        #plt.show()
-        img = plt.savefig('api_6.png')
+        # plt.show()
+        plt.xticks(rotation=360)
+        plt.savefig('api_6.png')
         # return img
 
 # da1 = DA('2014-1-1', '2014-12-30')

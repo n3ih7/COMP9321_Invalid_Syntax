@@ -43,6 +43,7 @@ class DB:
         df2['month'] = a
         df2['count'] = b
         df2.plot.bar(x='month', y='count')
+        plt.xticks(rotation=360)
         # plt.show()
         plt.savefig('api_5.png')
         # return img

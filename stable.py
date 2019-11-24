@@ -11,7 +11,13 @@ from state_and_fire import DC
 
 app = Flask(__name__)
 cors = CORS(app)
-flag = 0
+weather_usage = 0
+cause_of_fire_usage = 0
+severity_rating_usage = 0
+cause_analysis_usage = 0
+fire_factors_usage = 0
+happened_times_usage = 0
+state_and_fire_usage = 0
 pre_share_key = '2db16d2a-c3b7-4d60-9bec-66f9996a91d1'
 authorization = False
 
@@ -58,21 +64,22 @@ def send_request_weather_current(cityName: str = "Sydney"):
 
 @app.before_request
 def before_request_func():
-    global flag
     global authorization
     authorization = False
     key = request.args.get('APPID', type=str)
     if key == pre_share_key:
         authorization = True
-        flag += 1
 
 
 @app.route('/api/api_usage')
 def a():
-    global flag
     global authorization
     if authorization:
-        return jsonify(flag)
+        c = {'weather_usage': weather_usage, 'cause_of_fire_usage': cause_of_fire_usage,
+             'severity_rating_usage': severity_rating_usage, 'cause_analysis_usage': cause_analysis_usage,
+             'fire_factors_usage': fire_factors_usage, 'happened_times_usage': happened_times_usage,
+             'state_and_fire_usage': state_and_fire_usage}
+        return jsonify(c)
     else:
         return jsonify(success=False,
                        data={'APPID_required': True},
@@ -202,6 +209,8 @@ def get_weather_current():
                     final[key]['deg'] = 'north-northwest'
 
         a.update(final)
+        global weather_usage
+        weather_usage += 1
         return jsonify(a)
     else:
         return jsonify(success=False,
@@ -216,6 +225,8 @@ def cause_of_fire():
         end_date = request.args.get('end_date', default='2013-12-31', type=str)
         da1 = DA(start_date, end_date)
         da1.api_1()
+        global cause_of_fire_usage
+        cause_of_fire_usage += 1
         with open("api_1.png", "rb") as f:
             data = f.read()
             img_stream = base64.b64encode(data)
@@ -233,6 +244,8 @@ def severity_rating():
         end_date_2 = request.args.get('end_date', type=str)
         da2 = DA(start_date_2, end_date_2)
         da2.api_2()
+        global severity_rating_usage
+        severity_rating_usage += 1
         with open("api_2.png", "rb") as f:
             data = f.read()
             img_stream = base64.b64encode(data)
@@ -250,6 +263,8 @@ def cause_analysis():
         end_date_3 = request.args.get('end_date', type=str)
         da3 = DA(start_date_3, end_date_3)
         da3.api_3()
+        global cause_analysis_usage
+        cause_analysis_usage += 1
         with open("api_3.png", "rb") as f:
             data = f.read()
             img_stream = base64.b64encode(data)
@@ -263,11 +278,12 @@ def cause_analysis():
 @app.route('/api/fire_factors', methods=['GET'])
 def fire_factors():
     if authorization:
-        start_date_4 = request.args.get('start_date', type=str)
-        end_date_4 = request.args.get('end_date', type=str)
+        date_4 = request.args.get('start_date', type=str)
         city_name_4 = request.args.get('city_name', type=str)
-        da4 = DA(start_date_4, end_date_4)
+        da4 = DA(date_4, date_4)
         da4.api_4(city_name_4)
+        global fire_factors_usage
+        fire_factors_usage += 1
         with open("api_4.png", "rb") as f:
             data = f.read()
             img_stream = base64.b64encode(data)
@@ -285,6 +301,8 @@ def leo5():
         end_date_5 = request.args.get('end_date', type=str)
         da5 = DB(start_date_5, end_date_5)
         da5.api_1()
+        global fire_factors_usage
+        fire_factors_usage += 1
         with open("api_5.png", "rb") as f:
             data = f.read()
             img_stream = base64.b64encode(data)
@@ -302,6 +320,8 @@ def shaun():
         end_date_6 = request.args.get('end_date', type=str)
         da6 = DC(start_date_6, end_date_6)
         da6.api_1()
+        global state_and_fire_usage
+        state_and_fire_usage += 1
         with open("api_6.png", "rb") as f:
             data = f.read()
             img_stream = base64.b64encode(data)
