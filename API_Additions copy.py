@@ -36,9 +36,9 @@ class DA:
         df['cause_name'] = name
         df['counts'] = count
         df.plot.bar(x='cause_name', y='counts')
-        #plt.show()
-        plt.tight_layout()
+        # plt.show()
         plt.savefig('api_1.png')
+        # return img
 
     def api_2(self):
         dataset = pd.read_csv('model/origin_data.csv')
@@ -63,13 +63,14 @@ class DA:
         df['fire_class'] = name
         df['counts'] = count
         df.plot.bar(x='fire_class', y='counts')
-        #plt.show()
-        plt.xticks(rotation=360)
+        # plt.show()
         plt.savefig('api_2.png')
+        # return img
 
     def api_3(self):
         dataset = pd.read_csv('model/origin_data.csv')
-        human_factors = ['Campfire', 'Arson', 'Smoking', 'Equipment Use', 'Children', 'Fireworks', 'Railroad', 'Powerline', 'Structure']
+        human_factors = ['Campfire', 'Arson', 'Smoking', 'Equipment Use', 'Children', 'Fireworks', 'Railroad',
+                         'Powerline', 'Structure']
         classes = {}
         human = {}
         name = []
@@ -98,8 +99,9 @@ class DA:
         df['human_factors'] = count_human
         df['not_human_factors'] = count_not_human
         df.plot.barh(x='class_name')
-        #plt.show()
+        # plt.show()
         plt.savefig('api_3.png')
+        # return img
 
     def api_4(self, city_name):
         humidity = pd.read_csv('model/humidity.csv', index_col='datetime')
@@ -124,7 +126,7 @@ class DA:
         result_ws = [wind_speed.loc[self.start]]
 
         position = list(humidity.index.values).index(self.start)
-        for i in range(1, min(8, len(humidity.values)-1 - position)):
+        for i in range(1, min(8, len(humidity.values) - 1 - position)):
             result_h.append(humidity.values[position + i])
             result_p.append(pressure.values[position + i])
             result_t.append(temperature.values[position + i])
@@ -138,8 +140,9 @@ class DA:
         df['wind_direction'] = result_wd
         df['wind_speed'] = result_ws
         df.plot(x='day')
-        #plt.show()
+        # plt.show()
         plt.savefig('api_4.png')
+        # return img
 
 
 

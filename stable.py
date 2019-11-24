@@ -176,17 +176,52 @@ def get_weather_current():
     return jsonify(a)
 
 
-@app.route('/api/jay', methods=['GET'])
-def get_image_jay():
+@app.route('/api/cause_of_fire', methods=['GET'])
+def cause_of_fire():
     start_date = request.args.get('start_date', type=str)
     end_date = request.args.get('end_date', default='2013-12-31', type=str)
-    api_type = request.args.get('api_type', default='1', type=str)
     da1 = DA(start_date, end_date)
-    if api_type == '1':
-        da1.api_1()
-        with open("api_1.png", "rb") as f:
-            data = f.read()
-            img_stream = base64.b64encode(data)
+    da1.api_1()
+    with open("api_1.png", "rb") as f:
+        data = f.read()
+        img_stream = base64.b64encode(data)
+    return img_stream
+
+
+@app.route('/api/severity_rating', methods=['GET'])
+def severity_rating():
+    start_date = request.args.get('start_date', type=str)
+    end_date = request.args.get('end_date', type=str)
+    da2 = DA(start_date, end_date)
+    da2.api_2()
+    with open("api_2.png", "rb") as f:
+        data = f.read()
+        img_stream = base64.b64encode(data)
+    return img_stream
+
+
+@app.route('/api/cause_analysis', methods=['GET'])
+def cause_analysis():
+    start_date = request.args.get('start_date', type=str)
+    end_date = request.args.get('end_date', type=str)
+    da3 = DA(start_date, end_date)
+    da3.api_3()
+    with open("api_3.png", "rb") as f:
+        data = f.read()
+        img_stream = base64.b64encode(data)
+    return img_stream
+
+
+@app.route('/api/fire_factors', methods=['GET'])
+def fire_factors():
+    start_date = request.args.get('start_date', type=str)
+    end_date = request.args.get('end_date', type=str)
+    city_name = request.args.get('city_name', type=str)
+    da4 = DA(start_date, end_date)
+    da4.api_4(city_name)
+    with open("api_4.png", "rb") as f:
+        data = f.read()
+        img_stream = base64.b64encode(data)
     return img_stream
 
 
