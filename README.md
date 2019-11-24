@@ -11,7 +11,7 @@ apt update
 apt install wget git python3 python3-pip
 
 
-wget https://github.com/n3ih7/COMP9321_Invalid_Syntax/releases/download/1.0/submit.tar
+wget https://github.com/n3ih7/COMP9321_Invalid_Syntax/raw/master/submit.tar
 
 
 tar xvf file.tar
