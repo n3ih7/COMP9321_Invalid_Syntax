@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>Fire predication</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+      
+
+   </head>
+   <body>
+    <div class="container">
+      <div class="row clearfix">
+        <div class="col-md-12 column">
+          <nav class="navbar navbar-default" role="navigation">
+            <div class="navbar-header">
+               <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button> <a class="navbar-brand" href="#">Fire predication</a>
+            </div>
+          </nav>
+        </div>
+      </div>
+      <div class="row clearfix">
+        <div class="col-md-7 column">
+            <form role="form">
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Input City:</label><input class="form-control" id="city" />
+                </div>
+                <button  id = 'b1' type="button" >Submit</button>
+                
+            </form>
+            <table class="table" id = 'ta'>
+              <thead>
+                <tr>
+                  <th>
+                    Date
+                  </th>
+                  <th>
+                    humidity
+                  </th>
+                  <th>
+                    pressure
+                  </th>
+                  <th>
+                    temp
+                  </th>
+                  <th>
+                    wind speed
+                  </th>
+                  <th>
+                    wind direction
+                  </th>
+                  <th>
+                    fire rate
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td id = 'data1'>
+                  </td>
+                  <td id = 'hum1'>
+                  </td>
+                  <td id = 'pre1'>
+                  </td>
+                  <td id = 'temp1'>
+                  </td>
+                  <td id = 'ws1'>
+                  </td>
+                  <td id = 'wd1'>
+                  </td>
+                  <td id = 'f1'>
+                  </td>
+                </tr>
+                <tr class="success">
+                  <td id = 'data2'>
+                  </td>
+                  <td id = 'hum2'>
+                  </td>
+                  <td id = 'pre2'>
+                  </td>
+                  <td id = 'temp2'>
+                  </td>
+                  <td id = 'ws2'>
+                  </td>
+                  <td id = 'wd2'>
+                  </td>
+                  <td id = 'f2'>
+                  </td>
+                </tr>                
+                <tr>
+                  <td id = 'data3'>
+                  </td>
+                  <td id = 'hum3'>
+                  </td>
+                  <td id = 'pre3'>
+                  </td>
+                  <td id = 'temp3'>
+                  </td>
+                  <td id = 'ws3'>
+                  </td>
+                  <td id = 'wd3'>
+                  </td>
+                  <td id = 'f3'>
+                  </td>
+                </tr>                
+                <tr class="warning">
+                  <td id = 'data4'>
+                  </td>
+                  <td id = 'hum4'>
+                  </td>
+                  <td id = 'pre4'>
+                  </td>
+                  <td id = 'temp4'>
+                  </td>
+                  <td id = 'ws4'>
+                  </td>
+                  <td id = 'wd4'>
+                  </td>
+                  <td id = 'f4'>
+                  </td>
+                </tr>                
+                <tr>
+                  <td id = 'data5'>
+                  </td>
+                  <td id = 'hum5'>
+                  </td>
+                  <td id = 'pre5'>
+                  </td>
+                  <td id = 'temp5'>
+                  </td>
+                  <td id = 'ws5'>
+                  </td>
+                  <td id = 'wd5'>
+                  </td>
+                  <td id = 'f5'>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        <div class="col-md-5 column">
+            <img  src="WFFig1.jpg" />
+            <div>
+              <button  id = 'b8' type="button" >Check usage</button>
+              <p id = 'value1'></p>
+              <p id = 'value2'></p>
+              <p id = 'value3'></p>
+              <p id = 'value4'></p>
+              <p id = 'value5'></p>
+              <p id = 'value6'></p>
+              <p id = 'value7'></p>
+              <button  id = 'b9' type="button" >Close</button>
+            </div>
+
+          </div>
+
+      </div>
+      <div class="row clearfix">
+        <div class="col-md-4 column">
+            <div class="form-group">
+                <h3>
+                    The reason of fire(from 2012-10-1 to 2017-9-1):
+                </h3>
+                <label for="exampleInputEmail1">Input start time:(xxxx-xx-xx)</label><input class="form-control" id="st1" />
+              </div>
+            <div class="form-group">
+                <label for="exampleInputEmail1">Input end time:(xxxx-xx-xx)</label><input class="form-control" id="ed1" />
+              </div>
+              <button  id = 'b2' type="button" >Check</button>
+              <img height="400" width="400" src="" id = 'resimg1'/>
+        </div>
+        <div class="col-md-4 column">
+            <div class="form-group">
+                <h3>
+                    The class of fire(from 2012-10-1 to 2017-9-1):
+                </h3>
+                <label for="exampleInputEmail1">Input start time:(xxxx-xx-xx)</label><input class="form-control" id="st2" />
+              </div>
+            <div class="form-group">
+                <label for="exampleInputEmail1">Input end time:(xxxx-xx-xx)</label><input class="form-control" id="ed2" />
+              </div>
+              <button  id = 'b3' type="button" >Check</button>
+              <img height="400" width="400" src="" id = 'resimg2'/>
+        </div>
+        <div class="col-md-4 column">
+            <div class="form-group">
+                <h3>
+                    The class & reason analysis(from 2012-10-1 to 2017-9-1):
+                </h3>
+                <label for="exampleInputEmail1">Input start time:(xxxx-xx-xx)</label><input class="form-control" id="st3" />
+              </div>
+            <div class="form-group">
+                <label for="exampleInputEmail1">Input end time:(xxxx-xx-xx)</label><input class="form-control" id="ed3" />
+              </div>
+              <button  id = 'b4' type="button" >Check</button>
+              <img height="400" width="400" src="" id = 'resimg3'/>
+        </div>
+      </div>
+      <div class="row clearfix">
+          <div class="col-md-4 column">
+              <div class="form-group">
+                  <h3> 
+                      The impact of fire in US(from 2012-10-1 to 2017-9-1):
+                  </h3>
+                  <label for="exampleInputEmail1">Input start time:(xxxx-xx-xx)</label><input class="form-control" id="st4" />
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Input the city:</label><input class="form-control" id="ct4" />
+                  </div>
+                <button  id = 'b5' type="button" >Check</button>
+                <img height="400" width="400" src="" id = 'resimg4'/>
+          </div>
+          <div class="col-md-4 column">
+              <div class="form-group">
+                  <h3>
+                      The fire in each month(from 2012-10-1 to 2017-9-1):
+                  </h3>
+                  <label for="exampleInputEmail1">Input start time:(xxxx-xx-xx)</label><input class="form-control" id="st5" />
+                </div>
+              <div class="form-group">
+                  <label for="exampleInputEmail1">Input end time:(xxxx-xx-xx)</label><input class="form-control" id="ed5" />
+                </div>
+                <button  id = 'b6' type="button" >Check</button>
+                <img height="400" width="400" src="" id = 'resimg5'/>
+          </div>
+          <div class="col-md-4 column">
+              <div class="form-group">
+                  <h3>
+                      The stats & fire analysis(from 2012-10-1 to 2017-9-1):
+                  </h3>
+                  <label for="exampleInputEmail1">Input start time:(xxxx-xx-xx)</label><input class="form-control" id="st6" />
+                </div>
+              <div class="form-group">
+                  <label for="exampleInputEmail1">Input end time:(xxxx-xx-xx)</label><input class="form-control" id="ed6" />
+                </div>
+                <button  id = 'b7' type="button" >Check</button>
+                <img height="400" width="400" src="" id = 'resimg6'/>
+          </div>
+        </div>
+
+      <div class="row clearfix">
+          <div class="col-md-12 column">
+            <nav class="navbar navbar-default" role="navigation">
+              <div class="navbar-header">
+                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button> <a class="navbar-brand" href="#">NEWS</a>
+              </div>
+            </nav>
+          </div>
+        </div>
+      <div class="row clearfix">
+        <div class="col-md-4 column">
+          <h2>
+            Qld's southeast and SA on alert
+          </h2>
+          <p>
+            An enormous chunk of NSW is facing "elevated fire danger" today, as the threat also rises in South Australia and Queensland.          </p>
+          <p>
+             <a class="btn" href="https://www.news.com.au/national/horror-bushfire-conditions-set-to-cause-chaos-in-nsw-and-queensland/live-coverage/522e6db3627f7e96ffc4a4d1fc4eacf0">View details »</a>
+          </p>
+        </div>
+        <div class="col-md-4 column">
+          <h2>
+            NSW bushfires destroy nearly 500 homes 
+          </h2>
+          <p>
+            Nearly 500 homes have been lost in New South Wales in this bushfire season to date, the Rural Fire Service has confirmed.          </p>
+          <p>
+             <a class="btn" href="https://www.abc.net.au/news/2019-11-17/nsw-bushfires-nearly-500-homes-destroyed-since-start-of-season/11711898">View details »</a>
+          </p>
+        </div>
+        <div class="col-md-4 column">
+          <h2>
+            Australia's bushfire politics
+          </h2>
+          <p>
+            The parties prevaricate while the country burns. Summer was yet to begin and the bush was on fire. But the last thing on the government’s mind was climate change          </p>
+          <p>
+             <a class="btn" href="https://www.theguardian.com/australia-news/2019/nov/17/australias-bushfire-politics-the-parties-prevaricate-while-the-country-burns">View details »</a>
+          </p>
+        </div>
+      </div>
+    </div>
+   </body>
+   <script type="text/javascript" src="function.js"></script> 
+  <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
+</html>
