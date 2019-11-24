@@ -19,109 +19,217 @@
         </div>
       </div>
       <div class="row clearfix">
-        <div class="col-md-6 column">
+        <div class="col-md-7 column">
             <form role="form">
                 <div class="form-group">
                   <label for="exampleInputEmail1">Input City:</label><input class="form-control" id="city" />
                 </div>
-                <button  id = 'button'>Submit</button>
+                <button  id = 'b1' type="button" >Submit</button>
                 
-                </form>
-            <table class="table">
+            </form>
+            <table class="table" id = 'ta'>
               <thead>
                 <tr>
                   <th>
-                    编号
+                    Date
                   </th>
                   <th>
-                    产品
+                    humidity
                   </th>
                   <th>
-                    交付时间
+                    pressure
                   </th>
                   <th>
-                    状态
+                    temp
+                  </th>
+                  <th>
+                    wind speed
+                  </th>
+                  <th>
+                    wind direction
+                  </th>
+                  <th>
+                    fire rate
                   </th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <td>
-                    1
+                  <td id = 'data1'>
                   </td>
-                  <td>
-                    TB - Monthly
+                  <td id = 'hum1'>
                   </td>
-                  <td>
-                    01/04/2012
+                  <td id = 'pre1'>
                   </td>
-                  <td>
-                    Default
+                  <td id = 'temp1'>
+                  </td>
+                  <td id = 'ws1'>
+                  </td>
+                  <td id = 'wd1'>
+                  </td>
+                  <td id = 'f1'>
                   </td>
                 </tr>
                 <tr class="success">
-                  <td>
-                    1
+                  <td id = 'data2'>
                   </td>
-                  <td>
-                    TB - Monthly
+                  <td id = 'hum2'>
                   </td>
-                  <td>
-                    01/04/2012
+                  <td id = 'pre2'>
                   </td>
-                  <td>
-                    Approved
+                  <td id = 'temp2'>
                   </td>
-                </tr>
-                <tr class="error">
-                  <td>
-                    2
+                  <td id = 'ws2'>
                   </td>
-                  <td>
-                    TB - Monthly
+                  <td id = 'wd2'>
                   </td>
-                  <td>
-                    02/04/2012
+                  <td id = 'f2'>
                   </td>
-                  <td>
-                    Declined
+                </tr>                
+                <tr>
+                  <td id = 'data3'>
                   </td>
-                </tr>
+                  <td id = 'hum3'>
+                  </td>
+                  <td id = 'pre3'>
+                  </td>
+                  <td id = 'temp3'>
+                  </td>
+                  <td id = 'ws3'>
+                  </td>
+                  <td id = 'wd3'>
+                  </td>
+                  <td id = 'f3'>
+                  </td>
+                </tr>                
                 <tr class="warning">
-                  <td>
-                    3
+                  <td id = 'data4'>
                   </td>
-                  <td>
-                    TB - Monthly
+                  <td id = 'hum4'>
                   </td>
-                  <td>
-                    03/04/2012
+                  <td id = 'pre4'>
                   </td>
-                  <td>
-                    Pending
+                  <td id = 'temp4'>
                   </td>
-                </tr>
-                <tr class="info">
-                  <td>
-                    4
+                  <td id = 'ws4'>
                   </td>
-                  <td>
-                    TB - Monthly
+                  <td id = 'wd4'>
                   </td>
-                  <td>
-                    04/04/2012
+                  <td id = 'f4'>
                   </td>
-                  <td>
-                    Call in to confirm
+                </tr>                
+                <tr>
+                  <td id = 'data5'>
+                  </td>
+                  <td id = 'hum5'>
+                  </td>
+                  <td id = 'pre5'>
+                  </td>
+                  <td id = 'temp5'>
+                  </td>
+                  <td id = 'ws5'>
+                  </td>
+                  <td id = 'wd5'>
+                  </td>
+                  <td id = 'f5'>
                   </td>
                 </tr>
               </tbody>
             </table>
           </div>
-        <div class="col-md-6 column">
-            <img alt="140x140" src="IMG_5375.JPG" />
+        <div class="col-md-5 column">
+            <img  src="WFFig1.jpg" />
+
+
           </div>
+        <div>
+          <button  id = 'b8' type="button" >Check usage</button>
+          <h1 id = 'value'></h1>
+        </div>
       </div>
+      <div class="row clearfix">
+        <div class="col-md-4 column">
+            <div class="form-group">
+                <h3>
+                    The reason of fire(from 2012-10-1 to 2017-9-1):
+                </h3>
+                <label for="exampleInputEmail1">Input start time:(xxxx-xx-xx)</label><input class="form-control" id="st1" />
+              </div>
+            <div class="form-group">
+                <label for="exampleInputEmail1">Input end time:(xxxx-xx-xx)</label><input class="form-control" id="ed1" />
+              </div>
+              <button  id = 'b2' type="button" >Check</button>
+              <img height="400" width="400" src="" id = 'resimg1'/>
+        </div>
+        <div class="col-md-4 column">
+            <div class="form-group">
+                <h3>
+                    The class of fire(from 2012-10-1 to 2017-9-1):
+                </h3>
+                <label for="exampleInputEmail1">Input start time:(xxxx-xx-xx)</label><input class="form-control" id="st2" />
+              </div>
+            <div class="form-group">
+                <label for="exampleInputEmail1">Input end time:(xxxx-xx-xx)</label><input class="form-control" id="ed2" />
+              </div>
+              <button  id = 'b3' type="button" >Check</button>
+              <img height="400" width="400" src="" id = 'resimg2'/>
+        </div>
+        <div class="col-md-4 column">
+            <div class="form-group">
+                <h3>
+                    The class & reason analysis(from 2012-10-1 to 2017-9-1):
+                </h3>
+                <label for="exampleInputEmail1">Input start time:(xxxx-xx-xx)</label><input class="form-control" id="st3" />
+              </div>
+            <div class="form-group">
+                <label for="exampleInputEmail1">Input end time:(xxxx-xx-xx)</label><input class="form-control" id="ed3" />
+              </div>
+              <button  id = 'b4' type="button" >Check</button>
+              <img height="400" width="400" src="" id = 'resimg3'/>
+        </div>
+      </div>
+      <div class="row clearfix">
+          <div class="col-md-4 column">
+              <div class="form-group">
+                  <h3> 
+                      The impact of fire in US(from 2012-10-1 to 2017-9-1):
+                  </h3>
+                  <label for="exampleInputEmail1">Input start time:(xxxx-xx-xx)</label><input class="form-control" id="st4" />
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Input the city:</label><input class="form-control" id="ct4" />
+                  </div>
+                <button  id = 'b5' type="button" >Check</button>
+                <img height="400" width="400" src="" id = 'resimg4'/>
+          </div>
+          <div class="col-md-4 column">
+              <div class="form-group">
+                  <h3>
+                      The fire in each month(from 2012-10-1 to 2017-9-1):
+                  </h3>
+                  <label for="exampleInputEmail1">Input start time:(xxxx-xx-xx)</label><input class="form-control" id="st5" />
+                </div>
+              <div class="form-group">
+                  <label for="exampleInputEmail1">Input end time:(xxxx-xx-xx)</label><input class="form-control" id="ed5" />
+                </div>
+                <button  id = 'b6' type="button" >Check</button>
+                <img height="400" width="400" src="" id = 'resimg5'/>
+          </div>
+          <div class="col-md-4 column">
+              <div class="form-group">
+                  <h3>
+                      The stats & fire analysis(from 2012-10-1 to 2017-9-1):
+                  </h3>
+                  <label for="exampleInputEmail1">Input start time:(xxxx-xx-xx)</label><input class="form-control" id="st6" />
+                </div>
+              <div class="form-group">
+                  <label for="exampleInputEmail1">Input end time:(xxxx-xx-xx)</label><input class="form-control" id="ed6" />
+                </div>
+                <button  id = 'b7' type="button" >Check</button>
+                <img height="400" width="400" src="" id = 'resimg6'/>
+          </div>
+        </div>
+
       <div class="row clearfix">
           <div class="col-md-12 column">
             <nav class="navbar navbar-default" role="navigation">
