@@ -335,8 +335,8 @@ def leo5():
         end_date_5 = request.args.get('end_date', type=str)
         da5 = DB(start_date_5, end_date_5)
         da5.api_1()
-        global fire_factors_usage
-        fire_factors_usage += 1
+        global happened_times_usage
+        happened_times_usage += 1
         with open("api_5.png", "rb") as f:
             data = f.read()
             img_stream = base64.b64encode(data)
