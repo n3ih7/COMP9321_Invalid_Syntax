@@ -1,5 +1,7 @@
 # Flask API development for Data Analytics Service
 
+Based on `New_York_State_Forest_Ranger_Wildland_Fire_Reporting_Database__Beginning_2008.csv`, combined with historical weather conditions, our project is to predict the fire occurrence rate of a certain day and somewhere.
+
 ## Deployment
 Assumed environment:
 
