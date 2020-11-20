@@ -8,11 +8,9 @@ from model.Modeling import Model
 from API_Additions import DA
 from LeoAPI import DB
 from state_and_fire import DC
-from flask_restplus import Api, Resource
 
 app = Flask(__name__)
 cors = CORS(app)
-api = Api(app)
 weather_usage = 0
 cause_of_fire_usage = 0
 severity_rating_usage = 0

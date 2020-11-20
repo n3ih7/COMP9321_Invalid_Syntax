@@ -6,7 +6,7 @@
     "title": "Swagger Invalid_Syntax",
     "termsOfService": "http://swagger.io/terms/"
   },
-  "host": "vau.nono.fi",
+  "host": "127.0.0.1",
   "basePath": "/api",
   "tags": [
     {
